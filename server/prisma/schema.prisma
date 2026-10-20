@@ -1,0 +1,514 @@
+// Prisma schema for English & STEM Learning Academy
+// Supports both SQLite (for zero-setup local dev) and PostgreSQL (for production)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String       @id @default(uuid())
+  email        String       @unique
+  passwordHash String
+  name         String
+  role         String       @default("STUDENT") // STUDENT, INSTRUCTOR, ADMIN
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  profile      UserProfile?
+  progress     LessonProgress[]
+  vocabReviews VocabularyReview[]
+  quizAttempts QuizAttempt[]
+  examSessions ExamSession[]
+  examResults  ExamResult[]
+  statistics   UserStatistic?
+  streak       DailyStreak?
+  achievements UserAchievement[]
+  bookmarks    Bookmark[]
+  speakingAttempts SpeakingAttempt[]
+  personalityResponses PersonalityResponse[]
+
+  @@map("users")
+}
+
+model UserProfile {
+  id              String   @id @default(uuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  avatar          String?
+  bio             String?
+  englishLevel    String   @default("A1") // A1, A2, B1, B2, C1
+  targetTrack     String   @default("DATA_CENTER") // DATA_CENTER, TECHNICAL_ENGINEER, TOEIC, GENERAL
+  dailyGoalMinutes Int     @default(30)
+  uiLanguage      String   @default("th")
+
+  // Lobster Mascot Wardrobe & Customization
+  equippedHead    String   @default("NONE") // NONE, SAFETY_HELMET, TECH_HEADSET, CYBER_VISOR, GOLD_CROWN
+  equippedArmor   String   @default("DEFAULT") // DEFAULT, SAFETY_VEST, SAMURAI_ROBE, LAB_COAT, CYBER_ARMOR
+  equippedWeapon  String   @default("STEEL_KATANA") // STEEL_KATANA, TITANIUM_WRENCH, PLASMA_BLADE, FIBER_WAND, GOLD_RAPIER
+  equippedShoes   String   @default("SNEAKERS") // SNEAKERS, SAFETY_BOOTS, CYBER_HOVER
+  unlockedItems   String   @default("[\"NONE\",\"DEFAULT\",\"STEEL_KATANA\",\"SNEAKERS\"]") // JSON array
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("user_profiles")
+}
+
+model Course {
+  id          String   @id @default(uuid())
+  title       String
+  titleTh     String
+  description String
+  category    String   // GENERAL_ENGLISH, TOEIC, WORKPLACE, DATA_CENTER, STEM, LOGIC, PERSONALITY
+  level       String   @default("ALL") // A1, A2, B1, B2, INTERMEDIATE, ADVANCED, ALL
+  thumbnail   String?
+  isPublished Boolean  @default(true)
+  orderIndex  Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  modules     Module[]
+
+  @@map("courses")
+}
+
+model Module {
+  id          String   @id @default(uuid())
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  title       String
+  titleTh     String
+  description String?
+  orderIndex  Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  lessons     Lesson[]
+
+  @@map("modules")
+}
+
+model Lesson {
+  id          String   @id @default(uuid())
+  moduleId    String
+  module      Module   @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  title       String
+  titleTh     String
+  type        String   // VOCABULARY, GRAMMAR, LISTENING, SPEAKING, READING, WRITING, STEM, WORKPLACE, DATA_CENTER
+  durationMin Int      @default(15)
+  xpReward    Int      @default(20)
+  orderIndex  Int      @default(0)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  contents    LessonContent[]
+  progress    LessonProgress[]
+  quizzes     Quiz[]
+
+  @@map("lessons")
+}
+
+model LessonContent {
+  id          String   @id @default(uuid())
+  lessonId    String
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  sectionType String   // THEORY, DIALOGUE, PASSAGE, VOCAB_LIST, RULE, STEP_BY_STEP, SUMMARY
+  title       String?
+  titleTh     String?
+  body        String   // Rich markdown or text content
+  bodyTh      String?  // Thai explanation / translation
+  audioUrl    String?  // Audio link or generated speech reference
+  imageUrl    String?
+  orderIndex  Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  @@map("lesson_contents")
+}
+
+model LessonProgress {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lessonId    String
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  isCompleted Boolean  @default(false)
+  score       Int?
+  timeSpentSec Int     @default(0)
+  lastAccessed DateTime @default(now())
+
+  @@unique([userId, lessonId])
+  @@map("lesson_progress")
+}
+
+model Vocabulary {
+  id            String   @id @default(uuid())
+  word          String   @unique
+  ipa           String?
+  partOfSpeech  String   // noun, verb, adjective, adverb, preposition, phrase
+  meaningTh     String
+  meaningEn     String?
+  level         String   @default("A1") // A1, A2, B1, B2
+  category      String   @default("GENERAL") // GENERAL, WORKPLACE, DATA_CENTER, ENGINEERING
+  exampleEn     String
+  exampleTh     String
+  audioUrl      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  reviews       VocabularyReview[]
+  bookmarks     Bookmark[]
+
+  @@index([category])
+  @@index([level])
+  @@map("vocabularies")
+}
+
+model VocabularyReview {
+  id             String     @id @default(uuid())
+  userId         String
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vocabularyId   String
+  vocabulary     Vocabulary @relation(fields: [vocabularyId], references: [id], onDelete: Cascade)
+  easeFactor     Float      @default(2.5) // SM-2 Spaced repetition algorithm
+  intervalDays   Int        @default(1)
+  repetitions    Int        @default(0)
+  nextReviewDate DateTime   @default(now())
+  lastReviewedAt DateTime?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  @@unique([userId, vocabularyId])
+  @@index([userId, nextReviewDate])
+  @@map("vocabulary_reviews")
+}
+
+model FlashcardDeck {
+  id          String   @id @default(uuid())
+  title       String
+  titleTh     String
+  category    String
+  description String?
+  createdAt   DateTime @default(now())
+
+  @@map("flashcard_decks")
+}
+
+model Category {
+  id          String   @id @default(uuid())
+  code        String   @unique // TOEIC_PART_1..7, STEM_SCIENCE, STEM_TECH, STEM_ENG, STEM_MATH, LOGIC, PERSONALITY
+  name        String
+  nameTh      String
+  section     String   // ENGLISH, TOEIC, STEM, LOGIC, PERSONALITY
+  description String?
+  createdAt   DateTime @default(now())
+
+  topics      Topic[]
+  questions   Question[]
+
+  @@map("categories")
+}
+
+model Topic {
+  id          String    @id @default(uuid())
+  categoryId  String
+  category    Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  name        String
+  nameTh      String
+  description String?
+  createdAt   DateTime  @default(now())
+
+  questions   Question[]
+
+  @@map("topics")
+}
+
+model QuestionGroup {
+  id          String     @id @default(uuid())
+  title       String?
+  contextType String     // AUDIO_CONVERSATION, TALK, READING_PASSAGE, GRAPH, INVOICE, NOTICE
+  contentEn   String     // Passage, conversation script or notice
+  contentTh   String?    // Thai translation
+  mediaUrl    String?    // Audio or Image link
+  createdAt   DateTime   @default(now())
+
+  questions   Question[]
+
+  @@map("question_groups")
+}
+
+model Question {
+  id              String         @id @default(uuid())
+  categoryId      String
+  category        Category       @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  topicId         String?
+  topic           Topic?         @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  groupId         String?
+  group           QuestionGroup? @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  questionText    String
+  questionTextTh  String?        // Thai translation of question
+  questionType    String         @default("SINGLE_CHOICE") // SINGLE_CHOICE, FILL_BLANK, SCRAMBLE, LIKERT
+  difficulty      String         @default("MEDIUM") // EASY, MEDIUM, HARD
+  explanationTh   String         // Thai detailed explanation and step-by-step
+  formulaUsed     String?        // For STEM questions
+  audioUrl        String?
+  imageUrl        String?
+  points          Int            @default(1)
+  errorType       String?        // GRAMMAR, VOCABULARY, COMPREHENSION, CALCULATION, REASONING
+  isPublished     Boolean        @default(true)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  options         QuestionOption[]
+  quizQuestions   QuizQuestion[]
+  attemptAnswers  AttemptAnswer[]
+  media           QuestionMedia[]
+
+  @@index([categoryId])
+  @@index([difficulty])
+  @@map("questions")
+}
+
+model QuestionOption {
+  id          String   @id @default(uuid())
+  questionId  String
+  question    Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  optionKey   String   // A, B, C, D
+  contentEn   String
+  contentTh   String?
+  isCorrect   Boolean  @default(false)
+  orderIndex  Int      @default(0)
+
+  @@unique([questionId, optionKey])
+  @@map("question_options")
+}
+
+model QuestionMedia {
+  id          String   @id @default(uuid())
+  questionId  String
+  question    Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  mediaType   String   // IMAGE, AUDIO
+  url         String
+  caption     String?
+  createdAt   DateTime @default(now())
+
+  @@map("question_media")
+}
+
+model Quiz {
+  id          String   @id @default(uuid())
+  lessonId    String?
+  lesson      Lesson?  @relation(fields: [lessonId], references: [id], onDelete: SetNull)
+  title       String
+  titleTh     String
+  quizType    String   // LESSON_CHECK, TOEIC_PRACTICE, STEM_PRACTICE, LOGIC_PRACTICE
+  timeLimitSec Int     @default(600)
+  passScore   Int      @default(70)
+  createdAt   DateTime @default(now())
+
+  questions   QuizQuestion[]
+  attempts    QuizAttempt[]
+
+  @@map("quizzes")
+}
+
+model QuizQuestion {
+  id         String   @id @default(uuid())
+  quizId     String
+  quiz       Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  orderIndex Int      @default(0)
+
+  @@unique([quizId, questionId])
+  @@map("quiz_questions")
+}
+
+model QuizAttempt {
+  id            String   @id @default(uuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quizId        String
+  quiz          Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  score         Int
+  maxScore      Int
+  percentage    Float
+  passed        Boolean
+  timeSpentSec  Int      @default(0)
+  completedAt   DateTime @default(now())
+
+  answers       AttemptAnswer[]
+
+  @@map("quiz_attempts")
+}
+
+model AttemptAnswer {
+  id              String      @id @default(uuid())
+  quizAttemptId   String?
+  quizAttempt     QuizAttempt? @relation(fields: [quizAttemptId], references: [id], onDelete: Cascade)
+  examSessionId   String?
+  examSession     ExamSession? @relation(fields: [examSessionId], references: [id], onDelete: Cascade)
+  questionId      String
+  question        Question    @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  selectedKey     String?     // A, B, C, D or written response
+  isCorrect       Boolean
+  timeTakenSec    Int         @default(0)
+  createdAt       DateTime    @default(now())
+
+  @@map("attempt_answers")
+}
+
+model ExamSession {
+  id           String    @id @default(uuid())
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  examType     String    // ENGLISH_ONLY, TOEIC_FULL, TOEIC_MINI, STEM_FULL, LOGIC_ONLY, MIXED
+  totalQuestions Int
+  timeLimitSec Int
+  startedAt    DateTime  @default(now())
+  expiresAt    DateTime
+  submittedAt  DateTime?
+  status       String    @default("IN_PROGRESS") // IN_PROGRESS, SUBMITTED, EXPIRED
+
+  answers      AttemptAnswer[]
+  result       ExamResult?
+
+  @@index([userId, status])
+  @@map("exam_sessions")
+}
+
+model ExamResult {
+  id               String      @id @default(uuid())
+  sessionId        String      @unique
+  session          ExamSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  userId           String
+  user             User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  totalScore       Int
+  maxScore         Int
+  percentage       Float
+  accuracyBySkill  String      // JSON string of breakdown by category/skill
+  timeSpentSec     Int
+  createdAt        DateTime    @default(now())
+
+  @@index([userId])
+  @@map("exam_results")
+}
+
+model UserStatistic {
+  id              String   @id @default(uuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  xp              Int      @default(0)
+  level           Int      @default(0) // Starts at Level 0 for students
+  gems            Int      @default(50) // Currency for shop
+  coins           Int      @default(0) // Premium Gold Coins from Top-up
+  isVip           Boolean  @default(false) // VIP Status: unlocks all lessons & exclusive perks
+  rankTitle       String   @default("Intern Trainee")
+  rankTitleTh     String   @default("เด็กฝึกงานเทคนิค")
+  vocabMastered   Int      @default(0)
+  lessonsCompleted Int     @default(0)
+  quizzesTaken    Int      @default(0)
+  examsTaken      Int      @default(0)
+  averageScore    Float    @default(0.0)
+  lastActiveAt    DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("user_statistics")
+}
+
+model DailyStreak {
+  id             String    @id @default(uuid())
+  userId         String    @unique
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  currentStreak  Int       @default(0)
+  longestStreak  Int       @default(0)
+  lastActivityDate String  // YYYY-MM-DD
+  lastClaimDate  String?   // YYYY-MM-DD (Date of last claimed daily streak bonus)
+  updatedAt      DateTime  @updatedAt
+
+  @@map("daily_streaks")
+}
+
+model Achievement {
+  id          String   @id @default(uuid())
+  code        String   @unique
+  title       String
+  titleTh     String
+  description String
+  descriptionTh String
+  icon        String
+  xpReward    Int      @default(50)
+  createdAt   DateTime @default(now())
+
+  userAchievements UserAchievement[]
+
+  @@map("achievements")
+}
+
+model UserAchievement {
+  id            String      @id @default(uuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievementId String
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  unlockedAt    DateTime    @default(now())
+
+  @@unique([userId, achievementId])
+  @@map("user_achievements")
+}
+
+model Bookmark {
+  id           String     @id @default(uuid())
+  userId       String
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vocabularyId String
+  vocabulary   Vocabulary @relation(fields: [vocabularyId], references: [id], onDelete: Cascade)
+  createdAt    DateTime   @default(now())
+
+  @@unique([userId, vocabularyId])
+  @@map("bookmarks")
+}
+
+model SpeakingAttempt {
+  id            String   @id @default(uuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  targetText    String
+  transcribedText String
+  accuracyScore Float    // Word error rate / match percentage
+  missingWords  String   // JSON string of missed words
+  createdAt     DateTime @default(now())
+
+  @@map("speaking_attempts")
+}
+
+model PersonalityQuestion {
+  id          String   @id @default(uuid())
+  dimension   String   // TEAMWORK, DETAIL_ORIENTATION, ADAPTABILITY, PROBLEM_SOLVING, SAFETY_MINDSET
+  statementEn String
+  statementTh String
+  orderIndex  Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  responses   PersonalityResponse[]
+
+  @@map("personality_questions")
+}
+
+model PersonalityResponse {
+  id          String              @id @default(uuid())
+  userId      String
+  user        User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId  String
+  question    PersonalityQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  score       Int                 // 1: Strongly Disagree to 5: Strongly Agree
+  createdAt   DateTime            @default(now())
+
+  @@unique([userId, questionId])
+  @@map("personality_responses")
+}

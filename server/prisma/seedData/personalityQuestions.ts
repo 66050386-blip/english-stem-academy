@@ -1,0 +1,318 @@
+export interface SeedPersonalityQuestion {
+  dimension: string;
+  statementEn: string;
+  statementTh: string;
+  orderIndex: number;
+}
+
+export const personalityQuestionsData: SeedPersonalityQuestion[] = [
+  // --- 1. TEAMWORK (10 questions) ---
+  {
+    dimension: 'TEAMWORK',
+    statementEn: 'I actively listen to colleagues during shift handovers and clarify instructions before taking action.',
+    statementTh: 'ฉันตั้งใจรับฟังเพื่อนร่วมงานระหว่างการส่งมอบเวร และทบทวนคำสั่งให้เข้าใจชัดเจนก่อนลงมือทำ',
+    orderIndex: 1,
+  },
+  {
+    dimension: 'TEAMWORK',
+    statementEn: 'When unexpected equipment alarms occur, I readily support team members with heavy or urgent workloads.',
+    statementTh: 'เมื่อเกิดสัญญาณเตือนเครื่องจักรที่ไม่คาดคิด ฉันพร้อมช่วยเหลือเพื่อนร่วมงานที่มีภาระงานหนักหรือเร่งด่วน',
+    orderIndex: 2,
+  },
+  {
+    dimension: 'TEAMWORK',
+    statementEn: 'I communicate technical status updates clearly so my teammates always know what work has been completed.',
+    statementTh: 'ฉันสื่อสารสถานะการทำงานอย่างชัดเจน เพื่อให้เพื่อนร่วมทีมทราบเสมอว่างานส่วนใดเสร็จสิ้นแล้ว',
+    orderIndex: 3,
+  },
+  {
+    dimension: 'TEAMWORK',
+    statementEn: 'I respect diverse opinions and constructive feedback when troubleshooting facility failures as a team.',
+    statementTh: 'ฉันเคารพความคิดเห็นที่หลากหลายและคำติชมเชิงสร้างสรรค์เมื่อร่วมกันวิเคราะห์ปัญหาเครื่องจักรเป็นทีม',
+    orderIndex: 4,
+  },
+  {
+    dimension: 'TEAMWORK',
+    statementEn: 'I willingly share technical knowledge and best practices with junior apprentices and new technicians.',
+    statementTh: 'ฉันเต็มใจแบ่งปันความรู้ทางเทคนิคและแนวทางปฏิบัติที่ดีกับช่างเทคนิคฝึกหัดและเพื่อนร่วมงานใหม่',
+    orderIndex: 5,
+  },
+  {
+    dimension: 'TEAMWORK',
+    statementEn: 'I prioritize team goals and overall facility uptime over individual recognition.',
+    statementTh: 'ฉันให้ความสำคัญกับเป้าหมายของทีมและเวลาการทำงานต่อเนื่องของศูนย์ข้อมูลมากกว่าการได้รับคำชมเฉพาะตัว',
+    orderIndex: 6,
+  },
+  {
+    dimension: 'TEAMWORK',
+    statementEn: 'I resolve disagreements with coworkers professionally by focusing on facts and standard procedures.',
+    statementTh: 'ฉันจัดการความเห็นต่างกับเพื่อนร่วมงานอย่างมืออาชีพโดยยึดข้อเท็จจริงและขั้นตอนมาตรฐานเป็นหลัก',
+    orderIndex: 7,
+  },
+  {
+    dimension: 'TEAMWORK',
+    statementEn: 'I participate actively in pre-shift briefing meetings (toolbox talks) and contribute helpful suggestions.',
+    statementTh: 'ฉันมีส่วนร่วมอย่างกระตือรือร้นในการประชุมสั้นก่อนเริ่มกะ (Toolbox talk) และเสนอแนะข้อคิดเห็นที่เป็นประโยชน์',
+    orderIndex: 8,
+  },
+  {
+    dimension: 'TEAMWORK',
+    statementEn: 'I readily coordinate with external contractors to ensure that maintenance windows run smoothly.',
+    statementTh: 'ฉันประสานงานกับผู้รับเหมาภายนอกอย่างราบรื่น เพื่อให้ช่วงเวลาการซ่อมบำรุงดำเนินไปตามแผน',
+    orderIndex: 9,
+  },
+  {
+    dimension: 'TEAMWORK',
+    statementEn: 'I believe that strong cross-team collaboration between mechanical and electrical crews prevents outages.',
+    statementTh: 'ฉันเชื่อว่าความร่วมมือระหว่างทีมเครื่องกลและทีมไฟฟ้าเป็นกุญแจสำคัญในการป้องกันระบบหยุดชะงัก',
+    orderIndex: 10,
+  },
+
+  // --- 2. DETAIL ORIENTATION (10 questions) ---
+  {
+    dimension: 'DETAIL_ORIENTATION',
+    statementEn: 'I thoroughly inspect wire labels and terminal connections before closing an electrical panel.',
+    statementTh: 'ฉันตรวจสอบป้ายชื่อสายไฟและขั้วต่ออย่างละเอียดถี่ถ้วนก่อนปิดฝาตู้ควบคุมไฟฟ้าเสมอ',
+    orderIndex: 11,
+  },
+  {
+    dimension: 'DETAIL_ORIENTATION',
+    statementEn: 'I consistently record accurate numeric readings in maintenance logbooks rather than relying on memory.',
+    statementTh: 'ฉันจดบันทึกตัวเลขที่วัดได้ลงในสมุดบันทึกงานอย่างสม่ำเสมอ แทนที่จะพึ่งพาเพียงความจำ',
+    orderIndex: 12,
+  },
+  {
+    dimension: 'DETAIL_ORIENTATION',
+    statementEn: 'I notice small abnormalities such as unusual vibrations, odors, or minor fluid drips during rounds.',
+    statementTh: 'ฉันสังเกตเห็นความผิดปกติเล็กๆ น้อยๆ เช่น การสั่นสะเทือน กลิ่น หรือการหยดของของเหลวระหว่างการเดินตรวจรอบ',
+    orderIndex: 13,
+  },
+  {
+    dimension: 'DETAIL_ORIENTATION',
+    statementEn: 'I double-check calculation results and unit conversions before setting trip threshold limits.',
+    statementTh: 'ฉันตรวจสอบผลการคำนวณและการแปลงหน่วยซ้ำอีกครั้งก่อนตั้งค่าขีดจำกัดแจ้งเตือน',
+    orderIndex: 14,
+  },
+  {
+    dimension: 'DETAIL_ORIENTATION',
+    statementEn: 'I ensure all tools and spare screws are accounted for so that nothing is left behind inside server racks.',
+    statementTh: 'ฉันตรวจนับเครื่องมือและน็อตอะไหล่ให้ครบถ้วน เพื่อให้มั่นใจว่าจะไม่มีสิ่งใดตกค้างอยู่ในตู้เซิร์ฟเวอร์',
+    orderIndex: 15,
+  },
+  {
+    dimension: 'DETAIL_ORIENTATION',
+    statementEn: 'I follow written Standard Operating Procedures (SOP) step-by-step without skipping steps.',
+    statementTh: 'ฉันปฏิบัติตามคู่มือขั้นตอนมาตรฐาน (SOP) อย่างเป็นลำดับขั้นตอนโดยไม่ข้ามขั้นตอนใดๆ',
+    orderIndex: 16,
+  },
+  {
+    dimension: 'DETAIL_ORIENTATION',
+    statementEn: 'I verify that measuring instruments like multimeters have valid calibration dates before testing.',
+    statementTh: 'ฉันตรวจสอบเสมอว่าเครื่องมือวัด เช่น มัลติมิเตอร์ ยังไม่หมดอายุการสอบเทียบก่อนนำมาใช้งาน',
+    orderIndex: 17,
+  },
+  {
+    dimension: 'DETAIL_ORIENTATION',
+    statementEn: 'I pay careful attention to grammar and precise equipment tags when writing technical incident reports.',
+    statementTh: 'ฉันให้ความสำคัญกับความถูกต้องของไวยากรณ์และรหัสอุปกรณ์เมื่อเขียนรายงานเหตุการณ์ทางเทคนิค',
+    orderIndex: 18,
+  },
+  {
+    dimension: 'DETAIL_ORIENTATION',
+    statementEn: 'I verify that cold aisle containment seals and brush grommets are intact to prevent airflow leakage.',
+    statementTh: 'ฉันตรวจสอบขอบยางกั้นลมเย็นและแปรงปิดช่องร้อยสายไฟว่าอยู่ในสภาพสมบูรณ์เพื่อป้องกันลมรั่ว',
+    orderIndex: 19,
+  },
+  {
+    dimension: 'DETAIL_ORIENTATION',
+    statementEn: 'I review circuit schematics carefully to understand all connections before modifying any wiring.',
+    statementTh: 'ฉันทบทวนแผนผังวงจรไฟฟ้าอย่างละเอียดเพื่อทำความเข้าใจจุดต่อทั้งหมดก่อนทำการแก้ไขสายไฟ',
+    orderIndex: 20,
+  },
+
+  // --- 3. ADAPTABILITY (10 questions) ---
+  {
+    dimension: 'ADAPTABILITY',
+    statementEn: 'I remain calm, focused, and composed when critical equipment alarms trigger unexpectedly.',
+    statementTh: 'ฉันยังคงสงบ มีสมาธิ และมีสติมั่นคงเมื่อสัญญาณเตือนอุปกรณ์วิกฤตดังขึ้นโดยไม่คาดคิด',
+    orderIndex: 21,
+  },
+  {
+    dimension: 'ADAPTABILITY',
+    statementEn: 'I am open to learning new technological systems, such as advanced BMS platforms or liquid cooling.',
+    statementTh: 'ฉันเปิดรับการเรียนรู้ระบบเทคโนโลยีใหม่ๆ เช่น แพลตฟอร์ม BMS ขั้นสูง หรือระบบระบายความร้อนด้วยของเหลว',
+    orderIndex: 22,
+  },
+  {
+    dimension: 'ADAPTABILITY',
+    statementEn: 'I can adjust my working schedule and support night shifts or emergency callouts when necessary.',
+    statementTh: 'ฉันสามารถปรับเปลี่ยนตารางการทำงานเพื่อรองรับกะดึกหรือการเข้าเวรฉุกเฉินเมื่อมีความจำเป็น',
+    orderIndex: 23,
+  },
+  {
+    dimension: 'ADAPTABILITY',
+    statementEn: 'When original plans must change due to weather or vendor delays, I quickly pivot to alternative tasks.',
+    statementTh: 'เมื่อแผนงานเดิมต้องเปลี่ยนแปลงเนื่องจากสภาพอากาศหรือผู้ส่งของล่าช้า ฉันสามารถสลับไปทำงานสำรองได้อย่างรวดเร็ว',
+    orderIndex: 24,
+  },
+  {
+    dimension: 'ADAPTABILITY',
+    statementEn: 'I adapt smoothly to working with multinational colleagues and engineers from diverse cultural backgrounds.',
+    statementTh: 'ฉันปรับตัวได้อย่างราบรื่นในการทำงานร่วมกับเพื่อนร่วมงานและวิศวกรจากหลากหลายสัญชาติและวัฒนธรรม',
+    orderIndex: 25,
+  },
+  {
+    dimension: 'ADAPTABILITY',
+    statementEn: 'I view unexpected equipment breakdowns as valuable learning opportunities to sharpen diagnostic skills.',
+    statementTh: 'ฉันมองว่าเหตุเครื่องจักรขัดข้องที่ไม่คาดคิดเป็นโอกาสการเรียนรู้ที่มีค่าในการฝึกฝนทักษะการวิเคราะห์ปัญหา',
+    orderIndex: 26,
+  },
+  {
+    dimension: 'ADAPTABILITY',
+    statementEn: 'I quickly master new test equipment and software tools with minimal formal supervision.',
+    statementTh: 'ฉันสามารถเรียนรู้การใช้งานเครื่องมือทดสอบและซอฟต์แวร์ใหม่ๆ ได้อย่างรวดเร็วด้วยตนเอง',
+    orderIndex: 27,
+  },
+  {
+    dimension: 'ADAPTABILITY',
+    statementEn: 'I stay productive and positive even when working in noisy environments or during long maintenance windows.',
+    statementTh: 'ฉันยังคงทำงานได้อย่างมีประสิทธิภาพและมีทัศนคติที่ดี แม้ต้องอยู่ในสภาพแวดล้อมที่มีเสียงดังหรือช่วงกะที่ยาวนาน',
+    orderIndex: 28,
+  },
+  {
+    dimension: 'ADAPTABILITY',
+    statementEn: 'I accept organizational policy updates and workflow changes with an open and constructive mindset.',
+    statementTh: 'ฉันยอมรับการปรับปรุงนโยบายองค์กรและการเปลี่ยนแปลงขั้นตอนการทำงานด้วยมุมมองที่เปิดกว้างและสร้างสรรค์',
+    orderIndex: 29,
+  },
+  {
+    dimension: 'ADAPTABILITY',
+    statementEn: 'I can multitask effectively between monitoring dashboards and performing hands-on physical inspections.',
+    statementTh: 'ฉันสามารถสลับการทำงานระหว่างการเฝ้าระวังหน้าจอดิจิทัลและการเดินตรวจเช็คหน้างานจริงได้อย่างมีประสิทธิภาพ',
+    orderIndex: 30,
+  },
+
+  // --- 4. PROBLEM SOLVING (10 questions) ---
+  {
+    dimension: 'PROBLEM_SOLVING',
+    statementEn: 'I systematically isolate electrical circuits and test individual components to identify root causes.',
+    statementTh: 'ฉันตัดแยกวงจรและทดสอบชิ้นส่วนทีละชิ้นอย่างเป็นระบบเพื่อหาสาเหตุที่แท้จริงของปัญหา',
+    orderIndex: 31,
+  },
+  {
+    dimension: 'PROBLEM_SOLVING',
+    statementEn: 'I rely on verified measurements and diagnostic data rather than making intuitive guesses.',
+    statementTh: 'ฉันพึ่งพาค่าที่วัดได้จริงและข้อมูลการวินิจฉัย มากกว่าการคาดเดาด้วยความรู้สึก',
+    orderIndex: 32,
+  },
+  {
+    dimension: 'PROBLEM_SOLVING',
+    statementEn: 'When faced with a complex chiller fault, I break down the problem into smaller logical subsystems.',
+    statementTh: 'เมื่อเจอปัญหาชิลเลอร์ที่ซับซ้อน ฉันจะย่อยปัญหาออกเป็นระบบย่อยๆ ตามหลักตรรกะเพื่อตรวจสอบ',
+    orderIndex: 33,
+  },
+  {
+    dimension: 'PROBLEM_SOLVING',
+    statementEn: 'I consult engineering manuals, schematics, and manufacturer service bulletins when troubleshooting.',
+    statementTh: 'ฉันเปิดดูคู่มือวิศวกรรม แผนผังวงจร และเอกสารแจ้งเตือนของผู้ผลิตเสมอเมื่อต้องแก้ไขปัญหา',
+    orderIndex: 34,
+  },
+  {
+    dimension: 'PROBLEM_SOLVING',
+    statementEn: 'I think ahead about potential failure scenarios and prepare contingency backup procedures in advance.',
+    statementTh: 'ฉันคิดล่วงหน้าถึงกรณีความล้มเหลวที่อาจเกิดขึ้น และเตรียมขั้นตอนสำรองฉุกเฉินไว้ล่วงหน้าเสมอ',
+    orderIndex: 35,
+  },
+  {
+    dimension: 'PROBLEM_SOLVING',
+    statementEn: 'I analyze historical telemetry trend graphs to detect subtle patterns before an asset completely breaks down.',
+    statementTh: 'ฉันวิเคราะห์กราฟแนวโน้มในอดีตเพื่อตรวจจับสัญญาณเตือนก่อนที่อุปกรณ์จะชำรุดเสียหายโดยสิ้นเชิง',
+    orderIndex: 36,
+  },
+  {
+    dimension: 'PROBLEM_SOLVING',
+    statementEn: 'I evaluate multiple possible solutions to determine which option provides the safest and most reliable fix.',
+    statementTh: 'ฉันประเมินแนวทางแก้ไขหลายๆ ทางเลือก เพื่อเลือกวิธีที่ปลอดภัยและมีความน่าเชื่อถือสูงสุด',
+    orderIndex: 37,
+  },
+  {
+    dimension: 'PROBLEM_SOLVING',
+    statementEn: 'I seek out root causes (5-Whys methodology) rather than merely applying quick temporary patches.',
+    statementTh: 'ฉันค้นหาสาเหตุที่แท้จริง (วิธี 5-Whys) มากกว่าการแก้ปัญหาเฉพาะหน้าแบบชั่วคราว',
+    orderIndex: 38,
+  },
+  {
+    dimension: 'PROBLEM_SOLVING',
+    statementEn: 'I can think logically under pressure without letting stress cloud my technical judgment.',
+    statementTh: 'ฉันสามารถคิดวิเคราะห์อย่างมีตรรกะภายใต้ความกดดัน โดยไม่ปล่อยให้ความเครียดบดบังการตัดสินใจทางเทคนิค',
+    orderIndex: 39,
+  },
+  {
+    dimension: 'PROBLEM_SOLVING',
+    statementEn: 'I document lessons learned after every major incident so that similar faults can be avoided in the future.',
+    statementTh: 'ฉันบันทึกบทเรียนที่ได้ (Lessons Learned) หลังเหตุการณ์สำคัญ เพื่อป้องกันไม่ให้เกิดปัญหาซ้ำในอนาคต',
+    orderIndex: 40,
+  },
+
+  // --- 5. SAFETY MINDSET (10 questions) ---
+  {
+    dimension: 'SAFETY_MINDSET',
+    statementEn: 'I strictly implement Lockout/Tagout (LOTO) and verify zero electrical energy before starting any repair.',
+    statementTh: 'ฉันปฏิบัติตามมาตรฐานตัดแยกพลังงาน (LOTO) อย่างเคร่งครัด และตรวจวัดว่าไม่มีกระแสไฟหลงเหลืออยู่ก่อนเริ่มงานเสมอ',
+    orderIndex: 41,
+  },
+  {
+    dimension: 'SAFETY_MINDSET',
+    statementEn: 'I wear all designated Personal Protective Equipment (PPE) including safety boots and eye protection at all times.',
+    statementTh: 'ฉันสวมใส่อุปกรณ์คุ้มครองความปลอดภัยส่วนบุคคล (PPE) เช่น รองเท้านิรภัยและแว่นตานิรภัย ตลอดเวลาในพื้นที่ปฏิบัติงาน',
+    orderIndex: 42,
+  },
+  {
+    dimension: 'SAFETY_MINDSET',
+    statementEn: 'I will immediately stop work if I observe an unsafe condition or an ungrounded high-voltage hazard.',
+    statementTh: 'ฉันจะสั่งหยุดการทำงานทันทีหากสังเกตเห็นสภาวะที่ไม่ปลอดภัยหรืออันตรายจากสายไฟแรงสูงที่ไม่มีสายดิน',
+    orderIndex: 43,
+  },
+  {
+    dimension: 'SAFETY_MINDSET',
+    statementEn: 'I never bypass safety interlocks or emergency stop circuits to save time or convenience.',
+    statementTh: 'ฉันไม่เคยลัดวงจรระบบอินเตอร์ล็อกหรือวงจรหยุดฉุกเฉินเพียงเพื่อความรวดเร็วหรือความสะดวกสบาย',
+    orderIndex: 44,
+  },
+  {
+    dimension: 'SAFETY_MINDSET',
+    statementEn: 'I keep emergency egress pathways, fire extinguishers, and eye-wash stations clear of all obstructions.',
+    statementTh: 'ฉันดูแลให้เส้นทางหนีไฟฉุกเฉิน ถังดับเพลิง และจุดล้างตาฉุกเฉิน ปราศจากสิ่งกีดขวางอยู่เสมอ',
+    orderIndex: 45,
+  },
+  {
+    dimension: 'SAFETY_MINDSET',
+    statementEn: 'I verify that proper permits (hot work, energized electrical work) are signed before entering hazardous areas.',
+    statementTh: 'ฉันตรวจสอบว่าใบอนุญาตทำงาน (Hot work, งานไฟฟ้าแรงสูง) ได้รับการลงนามถูกต้องก่อนเข้าพื้นที่เสี่ยงภัย',
+    orderIndex: 46,
+  },
+  {
+    dimension: 'SAFETY_MINDSET',
+    statementEn: 'I inspect ladders, hoists, and power tools for wear or structural damage prior to every use.',
+    statementTh: 'ฉันตรวจสอบบันได รอก และเครื่องมือไฟฟ้าว่ามีรอยสึกหรอหรือความชำรุดเสียหายหรือไม่ก่อนใช้งานทุกครั้ง',
+    orderIndex: 47,
+  },
+  {
+    dimension: 'SAFETY_MINDSET',
+    statementEn: 'I report near-miss incidents proactively so that workplace safety hazards can be eliminated early.',
+    statementTh: 'ฉันรายงานเหตุการณ์เกือบเกิดอุบัติเหตุ (Near-miss) ในเชิงรุก เพื่อกำจัดจุดเสี่ยงอันตรายตั้งแต่เนิ่นๆ',
+    orderIndex: 48,
+  },
+  {
+    dimension: 'SAFETY_MINDSET',
+    statementEn: 'I adhere strictly to environmental regulations regarding the recovery and disposal of refrigerants and oils.',
+    statementTh: 'ฉันปฏิบัติตามกฎระเบียบด้านสิ่งแวดล้อมอย่างเคร่งครัดในการดักเก็บและกำจัดน้ำยาแอร์และน้ำมันเครื่อง',
+    orderIndex: 49,
+  },
+  {
+    dimension: 'SAFETY_MINDSET',
+    statementEn: 'I actively remind coworkers and visitors to follow facility safety protocols if I see non-compliance.',
+    statementTh: 'ฉันช่วยเตือนเพื่อนร่วมงานและผู้มาติดต่อให้ปฏิบัติตามกฎความปลอดภัยอย่างสม่ำเสมอหากพบการละเลย',
+    orderIndex: 50,
+  },
+];

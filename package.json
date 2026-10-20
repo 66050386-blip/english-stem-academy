@@ -1,0 +1,26 @@
+{
+  "name": "english-stem-academy",
+  "version": "1.0.0",
+  "description": "English & STEM Learning Academy Web Application for Data Center & Technical Engineering",
+  "private": true,
+  "scripts": {
+    "start": "node scripts/start.js",
+    "dev": "node scripts/start.js",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "seed": "npm --prefix server run seed",
+    "test": "npm --prefix server run test",
+    "build": "npm --prefix client run build"
+  },
+  "keywords": [
+    "english",
+    "stem",
+    "data-center",
+    "toeic",
+    "react",
+    "express",
+    "prisma"
+  ],
+  "author": "Academy Team",
+  "license": "MIT"
+}

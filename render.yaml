@@ -1,0 +1,22 @@
+# Render Blueprint Specification for English & STEM Academy
+# Deploy backend API connected with Supabase PostgreSQL
+services:
+  - type: web
+    name: english-stem-academy-api
+    env: node
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false # Set this to your Supabase PostgreSQL Connection String (Transaction Pooler or Direct)

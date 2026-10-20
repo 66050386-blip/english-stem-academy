@@ -1,0 +1,535 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased transition-colors duration-200 select-none;
+  }
+}
+
+/* 3D Tactile Gamified Buttons */
+.btn-duo-green {
+  @apply bg-[#58cc02] border-b-4 border-[#46a302] text-white font-extrabold uppercase tracking-wider rounded-2xl transition-all active:border-b-0 active:translate-y-1 hover:brightness-105;
+}
+
+.btn-duo-blue {
+  @apply bg-[#1cb0f6] border-b-4 border-[#1899d6] text-white font-extrabold uppercase tracking-wider rounded-2xl transition-all active:border-b-0 active:translate-y-1 hover:brightness-105;
+}
+
+.btn-duo-yellow {
+  @apply bg-[#ffc800] border-b-4 border-[#e5a500] text-slate-900 font-extrabold uppercase tracking-wider rounded-2xl transition-all active:border-b-0 active:translate-y-1 hover:brightness-105;
+}
+
+.btn-duo-red {
+  @apply bg-[#ff4b4b] border-b-4 border-[#ea2b2b] text-white font-extrabold uppercase tracking-wider rounded-2xl transition-all active:border-b-0 active:translate-y-1 hover:brightness-105;
+}
+
+.btn-duo-purple {
+  @apply bg-[#ce82ff] border-b-4 border-[#a855f7] text-white font-extrabold uppercase tracking-wider rounded-2xl transition-all active:border-b-0 active:translate-y-1 hover:brightness-105;
+}
+
+.btn-duo-white {
+  @apply bg-white border-2 border-b-4 border-slate-200 border-b-slate-300 text-slate-700 font-extrabold rounded-2xl transition-all active:border-b-2 active:translate-y-0.5 hover:bg-slate-50 dark:bg-slate-800 dark:border-slate-700 dark:border-b-slate-900 dark:text-slate-100 dark:hover:bg-slate-700;
+}
+
+/* Custom 3D Flip Card for Flashcards */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Mascot Speech Bubble Triangle */
+.speech-bubble-left::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 20px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 12px solid #ffffff;
+}
+.dark .speech-bubble-left::before {
+  border-right-color: #1e293b;
+}
+
+.speech-bubble-bottom::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12px solid #ffffff;
+}
+.dark .speech-bubble-bottom::before {
+  border-top-color: #1e293b;
+}
+
+/* Wavy Path Animation */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(-4px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+.animate-float {
+  animation: bounce-slow 2.5s ease-in-out infinite;
+}
+
+/* Smooth custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* Sparkling / Twinkling / Aura Effects (เอฟเฟกต์วิ้งวับตามด่านและความยาก) */
+@keyframes twinkle {
+  0%, 100% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.25) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+@keyframes orbit-cw {
+  from {
+    transform: rotate(0deg) translateX(46px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(46px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-ccw {
+  from {
+    transform: rotate(0deg) translateX(44px) rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg) translateX(44px) rotate(360deg);
+  }
+}
+
+@keyframes aura-pulse {
+  0% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(28, 176, 246, 0.7);
+  }
+  70% {
+    transform: scale(1.04);
+    box-shadow: 0 0 0 18px rgba(28, 176, 246, 0);
+  }
+  100% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(28, 176, 246, 0);
+  }
+}
+
+@keyframes aura-fire-pulse {
+  0% {
+    transform: scale(0.96);
+    box-shadow: 0 0 14px 2px rgba(239, 68, 68, 0.7), 0 0 24px 4px rgba(245, 158, 11, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 24px 6px rgba(239, 68, 68, 0.9), 0 0 38px 10px rgba(245, 158, 11, 0.7);
+  }
+  100% {
+    transform: scale(0.96);
+    box-shadow: 0 0 14px 2px rgba(239, 68, 68, 0.7), 0 0 24px 4px rgba(245, 158, 11, 0.5);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-150%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(250%) rotate(25deg);
+  }
+}
+
+.animate-twinkle-1 {
+  animation: twinkle 1.8s ease-in-out infinite;
+}
+.animate-twinkle-2 {
+  animation: twinkle 2.2s ease-in-out infinite 0.6s;
+}
+.animate-twinkle-3 {
+  animation: twinkle 1.9s ease-in-out infinite 1.1s;
+}
+
+.animate-orbit-1 {
+  animation: orbit-cw 6s linear infinite;
+}
+.animate-orbit-2 {
+  animation: orbit-ccw 7s linear infinite;
+}
+
+.animate-aura-cyan {
+  animation: aura-pulse 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-aura-fire {
+  animation: aura-fire-pulse 1.8s ease-in-out infinite;
+}
+
+.animate-shimmer-sweep {
+  animation: shimmer-sweep 2.8s ease-in-out infinite;
+}
+
+/* ================================================================
+   CINEMATIC SWORD SLASH & STANCE MOTION SYSTEM (ระบบวิถีฟันดาบแม่นยำสูงตามพิกัด Effect)
+   Origin: Shoulder Pivot (0px 0px inside shoulder group)
+   ================================================================ */
+
+/* Move 1: Flame Cleave (เพลิงผ่าปฐพี: วิถีฟันเฉียงขวาบนลงซ้ายล่าง) */
+@keyframes sword-slash-1 {
+  0% {
+    transform: rotate(24deg) translate(0px, 0px);
+  }
+  20% {
+    /* Wind-up: ยกดาบขึ้นสูงขวาบน เหนี่ยวแขนไปข้างหลัง */
+    transform: rotate(44deg) translate(4px, -6px) scale(1.03);
+  }
+  48% {
+    /* Explosive Cleave: ฟันตัดแหวกอากาศผ่านกึ่งกลางตัวด้วยความเร็วสูง */
+    transform: rotate(-32deg) translate(-4px, 4px) scale(1.08);
+  }
+  75% {
+    /* Follow-through to bottom-left: สะบัดสุดแรงลงมุมซ้ายล่าง */
+    transform: rotate(-86deg) translate(-10px, 12px) scale(1.05);
+  }
+  88% {
+    /* Recoil / Settle: ผ่อนแรงปะทะ */
+    transform: rotate(-76deg) translate(-8px, 10px) scale(1.0);
+  }
+  100% {
+    transform: rotate(-72deg) translate(-6px, 8px);
+  }
+}
+
+/* Move 2: Crescent Ascent (มังกรตวัดนภา: เสยล่างซ้ายพุ่งทะยานสู่ฟ้าขวาบน) */
+@keyframes sword-slash-2 {
+  0% {
+    transform: rotate(72deg) translate(0px, 0px);
+  }
+  22% {
+    /* Low Gather: ย่อต่ำดึงดาบแนบสะโพกซ้าย */
+    transform: rotate(94deg) translate(-6px, 14px) scale(0.96);
+  }
+  50% {
+    /* Upward Crescent Sweep: ตวัดดาบเสยโค้งผ่านลำตัวพุ่งขึ้นฟ้า */
+    transform: rotate(4deg) translate(2px, -4px) scale(1.08);
+  }
+  78% {
+    /* Skyward Apex: ปลายดาบพุ่งชี้ฟ้าตรงขอบคลื่นเสี้ยวทองคำ */
+    transform: rotate(-98deg) translate(10px, -18px) scale(1.06);
+  }
+  90% {
+    /* Triumph Peak */
+    transform: rotate(-105deg) translate(12px, -20px) scale(1.02);
+  }
+  100% {
+    transform: rotate(-94deg) translate(8px, -14px);
+  }
+}
+
+/* Move 3: Cross Dragon Thrust (มหาเทวะทะลวงศูนย์: แทงตรงทะลวงแกนกลาง + ผ่าตัดกากบาทคู่ ✕) */
+@keyframes sword-slash-3 {
+  0% {
+    transform: rotate(-15deg) translate(-8px, -2px);
+  }
+  18% {
+    /* Chamber Back: ดึงดาบถอยหลังแนบสีข้าง */
+    transform: rotate(-6deg) translate(8px, 2px) scale(0.98);
+  }
+  42% {
+    /* Explosive Piston Thrust: แทงทะลวงตรงเข้าจุดศูนย์กลาง (110, 110) */
+    transform: rotate(-22deg) translate(-28px, -8px) scale(1.14);
+  }
+  64% {
+    /* Cross Slash 1: ตวัดเฉียงตัดกากบาทเส้นที่ 1 */
+    transform: rotate(-55deg) translate(-14px, -14px) scale(1.06);
+  }
+  80% {
+    /* Cross Slash 2: สะบัดเฉียงตัดกากบาทเส้นที่ 2 */
+    transform: rotate(15deg) translate(-6px, 8px) scale(1.04);
+  }
+  100% {
+    /* Return to Piercing Guard */
+    transform: rotate(-18deg) translate(-10px, -4px);
+  }
+}
+
+/* Dynamic Torso Reaction Keyframes */
+@keyframes body-reaction-1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(2px, -1px) rotate(2deg); }
+  48% { transform: translate(-3px, 3px) rotate(-3deg); }
+  75% { transform: translate(-1px, 1px) rotate(-1deg); }
+}
+
+@keyframes body-reaction-2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  22% { transform: translate(0, 3px) rotate(1deg); }
+  50% { transform: translate(1px, -4px) rotate(-2deg); }
+  80% { transform: translate(0, -2px) rotate(-1deg); }
+}
+
+@keyframes body-reaction-3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  18% { transform: translate(3px, 0) rotate(1deg); }
+  42% { transform: translate(-6px, 0) rotate(-2deg); }
+  75% { transform: translate(-2px, 0) rotate(0deg); }
+}
+
+/* Wave Shockwave Kinetic Expansion */
+@keyframes wave-slash-1 {
+  0% {
+    opacity: 0;
+    transform: translate(20px, -16px) scale(0.7);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1.02);
+  }
+  75% {
+    opacity: 0.95;
+    transform: translate(-6px, 6px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-16px, 16px) scale(1.08);
+  }
+}
+
+@keyframes wave-slash-2 {
+  0% {
+    opacity: 0;
+    transform: translate(-16px, 20px) scale(0.7);
+  }
+  32% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1.03);
+  }
+  75% {
+    opacity: 0.95;
+    transform: translate(8px, -10px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(16px, -20px) scale(1.08);
+  }
+}
+
+@keyframes wave-slash-3 {
+  0% {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  70% {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+}
+
+.animate-sword-slash-1 {
+  transform-origin: 0px 0px;
+  animation: sword-slash-1 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-sword-slash-2 {
+  transform-origin: 0px 0px;
+  animation: sword-slash-2 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-sword-slash-3 {
+  transform-origin: 0px 0px;
+  animation: sword-slash-3 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.animate-body-slash-1 {
+  transform-origin: 110px 144px;
+  animation: body-reaction-1 0.65s ease-out forwards;
+}
+
+.animate-body-slash-2 {
+  transform-origin: 110px 144px;
+  animation: body-reaction-2 0.65s ease-out forwards;
+}
+
+.animate-body-slash-3 {
+  transform-origin: 110px 144px;
+  animation: body-reaction-3 0.65s ease-out forwards;
+}
+
+.animate-wave-slash-1 {
+  transform-origin: 126px 102px;
+  animation: wave-slash-1 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-wave-slash-2 {
+  transform-origin: 110px 115px;
+  animation: wave-slash-2 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-wave-slash-3 {
+  transform-origin: 110px 110px;
+  animation: wave-slash-3 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ================================================================
+   OPEN TREASURE CHEST & ADVENTURE FOREST THEME ANIMATIONS
+   ================================================================ */
+
+@keyframes sunburst-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes treasure-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.45)) drop-shadow(0 0 25px rgba(251, 191, 36, 0.3));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.75)) drop-shadow(0 0 45px rgba(251, 191, 36, 0.55));
+    transform: scale(1.02);
+  }
+}
+
+@keyframes sparkle-float {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.6) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.1) rotate(15deg);
+  }
+  70% {
+    opacity: 0.9;
+    transform: translateY(-22px) scale(1) rotate(-15deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-38px) scale(0.5) rotate(30deg);
+  }
+}
+
+@keyframes firefly-float {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(8px, -12px) scale(1.2);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(-6px, -24px) scale(0.85);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translate(-14px, -10px) scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+.animate-sunburst-slow {
+  animation: sunburst-slow 24s linear infinite;
+}
+
+.animate-treasure-glow {
+  animation: treasure-glow 2.5s ease-in-out infinite;
+}
+
+.animate-sparkle-float-1 {
+  animation: sparkle-float 2.4s ease-in-out infinite;
+}
+
+.animate-sparkle-float-2 {
+  animation: sparkle-float 2.8s ease-in-out infinite 0.8s;
+}
+
+.animate-sparkle-float-3 {
+  animation: sparkle-float 2.2s ease-in-out infinite 1.4s;
+}
+
+.animate-firefly-1 {
+  animation: firefly-float 6s ease-in-out infinite;
+}
+
+.animate-firefly-2 {
+  animation: firefly-float 8s ease-in-out infinite 2s;
+}
+
+.animate-firefly-3 {
+  animation: firefly-float 7s ease-in-out infinite 4s;
+}
+
+/* Custom subtle scrollbar for framed forest roadmap */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(6, 78, 59, 0.2);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.5);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.8);
+}
+
+
+
