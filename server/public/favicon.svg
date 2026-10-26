@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="favBg" x1="0" y1="0" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#58CC02" />
+      <stop offset="60%" stop-color="#46A302" />
+      <stop offset="100%" stop-color="#2E7D32" />
+    </linearGradient>
+
+    <!-- Lobster Red Gradient -->
+    <linearGradient id="lobsterRed" x1="100" y1="20" x2="100" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EF4444" />
+      <stop offset="60%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#B91C1C" />
+    </linearGradient>
+
+    <!-- Belly Orange Gradient -->
+    <linearGradient id="lobsterBelly" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FDBA74" />
+      <stop offset="50%" stop-color="#FB923C" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+
+    <!-- Steel Sword Blade Gradient -->
+    <linearGradient id="swordBlade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#E2E8F0" />
+      <stop offset="80%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#64748B" />
+    </linearGradient>
+
+    <!-- Golden Sword Guard Gradient -->
+    <linearGradient id="swordGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+
+    <!-- Blue Sneaker Gradient -->
+    <linearGradient id="sneakerBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0369A1" />
+    </linearGradient>
+  </defs>
+
+  <!-- App Icon Background Squircle -->
+  <rect x="6" y="6" width="208" height="208" rx="54" fill="url(#favBg)" stroke="#86EFAC" stroke-width="4" />
+
+  <!-- Radiance Aura -->
+  <circle cx="110" cy="110" r="80" fill="#FEF08A" opacity="0.2" />
+
+  <!-- Ground Shadow -->
+  <ellipse cx="110" cy="198" rx="46" ry="6" fill="#000000" opacity="0.25" />
+
+  <!-- Symmetrical Twin Antennae -->
+  <g id="antennae">
+    <!-- Left Antenna -->
+    <path d="M98 52 C78 22 48 18 38 32 C34 40 42 46 46 42" stroke="#1E293B" stroke-width="5" stroke-linecap="round" fill="none" />
+    <path d="M98 52 C78 22 48 18 38 32 C34 40 42 46 46 42" stroke="#DC2626" stroke-width="3.5" stroke-linecap="round" fill="none" />
+    <circle cx="43" cy="38" r="3" fill="#FACC15" />
+
+    <!-- Right Antenna -->
+    <path d="M122 52 C142 22 172 18 182 32 C186 40 178 46 174 42" stroke="#1E293B" stroke-width="5" stroke-linecap="round" fill="none" />
+    <path d="M122 52 C142 22 172 18 182 32 C186 40 178 46 174 42" stroke="#DC2626" stroke-width="3.5" stroke-linecap="round" fill="none" />
+    <circle cx="177" cy="38" r="3" fill="#FACC15" />
+  </g>
+
+  <!-- Tail Fan and Legs -->
+  <g id="tail-and-legs">
+    <path d="M96 156 C88 168 78 176 74 180 C84 178 96 172 100 160 Z" fill="url(#lobsterRed)" stroke="#1E293B" stroke-width="2" />
+    <path d="M104 158 C104 170 106 178 110 182 C114 178 116 170 116 158 Z" fill="url(#lobsterRed)" stroke="#1E293B" stroke-width="2" />
+    <path d="M124 156 C132 168 142 176 146 180 C136 178 124 172 120 160 Z" fill="url(#lobsterRed)" stroke="#1E293B" stroke-width="2" />
+
+    <path d="M96 155 C90 166 84 174 80 182" stroke="#1E293B" stroke-width="8" stroke-linecap="round" />
+    <path d="M96 155 C90 166 84 174 80 182" stroke="#DC2626" stroke-width="5" stroke-linecap="round" />
+    <path d="M124 155 C130 166 136 174 140 182" stroke="#1E293B" stroke-width="8" stroke-linecap="round" />
+    <path d="M124 155 C130 166 136 174 140 182" stroke="#DC2626" stroke-width="5" stroke-linecap="round" />
+
+    <!-- Left Sneaker -->
+    <g transform="translate(65, 172)">
+      <path d="M11 9 C14 8 20 9 22 13 L27 18 L7 18 C6 15 8 10 11 9 Z" fill="url(#sneakerBlue)" stroke="#1E293B" stroke-width="2" />
+      <path d="M21 14 C25 15 27 16 27 18 L21 18 Z" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.5" />
+      <path d="M5 22 C11 23 24 23 28 21 C29 19 28 18 26 18 L6 18 C5 18 4 19 5 22 Z" fill="#FFFFFF" stroke="#1E293B" stroke-width="2" />
+    </g>
+
+    <!-- Right Sneaker -->
+    <g transform="translate(125, 172)">
+      <path d="M9 13 C11 9 17 8 20 9 C23 10 25 15 24 18 L4 18 L9 13 Z" fill="url(#sneakerBlue)" stroke="#1E293B" stroke-width="2" />
+      <path d="M4 18 C4 16 6 15 10 14 L10 18 Z" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.5" />
+      <path d="M3 21 C7 23 20 23 26 22 C27 19 26 18 25 18 L5 18 C3 18 2 19 3 21 Z" fill="#FFFFFF" stroke="#1E293B" stroke-width="2" />
+    </g>
+  </g>
+
+  <!-- Torso & Belly -->
+  <g id="torso">
+    <ellipse cx="110" cy="144" rx="20" ry="24" fill="url(#lobsterRed)" stroke="#1E293B" stroke-width="3" />
+    <ellipse cx="110" cy="144" rx="14" ry="19" fill="url(#lobsterBelly)" stroke="#1E293B" stroke-width="2" />
+    <line x1="98" y1="135" x2="122" y2="135" stroke="#9A3412" stroke-width="2" stroke-linecap="round" />
+    <line x1="96" y1="145" x2="124" y2="145" stroke="#9A3412" stroke-width="2" stroke-linecap="round" />
+    <line x1="99" y1="155" x2="121" y2="155" stroke="#9A3412" stroke-width="2" stroke-linecap="round" />
+  </g>
+
+  <!-- Left Arm & Claw -->
+  <g id="left-arm">
+    <path d="M94 128 C84 132 76 126 68 120" stroke="#1E293B" stroke-width="8" stroke-linecap="round" />
+    <path d="M94 128 C84 132 76 126 68 120" stroke="#DC2626" stroke-width="5" stroke-linecap="round" />
+    <g transform="translate(46, 116) rotate(-15)">
+      <path d="M36 28 C22 10 6 12 0 25 C-4 32 4 40 16 36 C26 32 36 28 36 28 Z" fill="url(#lobsterRed)" stroke="#1E293B" stroke-width="3" />
+      <path d="M36 30 C25 45 10 46 2 35 C-2 32 6 26 18 28 C28 30 36 30 36 30 Z" fill="url(#lobsterRed)" stroke="#1E293B" stroke-width="3" />
+    </g>
+  </g>
+
+  <!-- Big Heroic Head & Eyes -->
+  <g id="head">
+    <circle cx="110" cy="84" r="44" fill="url(#lobsterRed)" stroke="#1E293B" stroke-width="3.5" />
+    <path d="M72 104 C84 122 136 122 148 104 C136 116 84 116 72 104 Z" fill="#991B1B" />
+
+    <!-- Left Eye -->
+    <ellipse cx="85" cy="82" rx="15" ry="17" fill="#FFFFFF" stroke="#1E293B" stroke-width="3" />
+    <ellipse cx="87" cy="83" rx="10" ry="12" fill="#0F172A" />
+    <circle cx="89" cy="80" r="4.5" fill="#FFFFFF" />
+    <polygon points="84,87 85,85 87,86 85,88" fill="#38BDF8" opacity="0.9" />
+
+    <!-- Right Eye -->
+    <ellipse cx="135" cy="82" rx="15" ry="17" fill="#FFFFFF" stroke="#1E293B" stroke-width="3" />
+    <ellipse cx="133" cy="83" rx="10" ry="12" fill="#0F172A" />
+    <circle cx="135" cy="80" r="4.5" fill="#FFFFFF" />
+    <polygon points="131,87 132,85 134,86 132,88" fill="#38BDF8" opacity="0.9" />
+
+    <!-- Eyebrows -->
+    <path d="M74 65 L96 70" stroke="#1E293B" stroke-width="3.5" stroke-linecap="round" />
+    <path d="M146 65 L124 70" stroke="#1E293B" stroke-width="3.5" stroke-linecap="round" />
+
+    <!-- Smile -->
+    <path d="M102 105 Q110 112 118 105" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round" fill="none" />
+  </g>
+
+  <!-- Right Arm with Katana Sword -->
+  <g id="right-arm">
+    <path d="M126 128 C136 132 144 126 152 120" stroke="#1E293B" stroke-width="8" stroke-linecap="round" />
+    <path d="M126 128 C136 132 144 126 152 120" stroke="#DC2626" stroke-width="5" stroke-linecap="round" />
+
+    <!-- Right Pincer -->
+    <g transform="translate(138, 102) rotate(15)">
+      <path d="M16 28 C30 10 46 12 52 25 C56 32 48 40 36 36 C26 32 16 28 16 28 Z" fill="url(#lobsterRed)" stroke="#1E293B" stroke-width="3" />
+      <path d="M16 30 C27 45 42 46 50 35 C54 32 46 26 34 28 C24 30 16 30 16 30 Z" fill="url(#lobsterRed)" stroke="#1E293B" stroke-width="3" />
+    </g>
+
+    <!-- Katana Sword -->
+    <g transform="translate(155, 62) rotate(-25)">
+      <!-- Blade -->
+      <path d="M8 50 L10 -15 C10 -22 14 -25 15 -25 C16 -25 18 -20 18 -15 L16 50 Z" fill="url(#swordBlade)" stroke="#1E293B" stroke-width="2.5" />
+      <!-- Fuller groove -->
+      <line x1="13" y1="45" x2="14" y2="-10" stroke="#94A3B8" stroke-width="1" />
+      <!-- Golden Tsuba Guard -->
+      <ellipse cx="13" cy="50" rx="9" ry="3.5" fill="url(#swordGold)" stroke="#1E293B" stroke-width="1.5" />
+      <!-- Tsuka Grip Handle -->
+      <rect x="10" y="52" width="6" height="22" rx="2" fill="#1E293B" stroke="#0F172A" stroke-width="1.5" />
+      <line x1="10" y1="57" x2="16" y2="59" stroke="#FEF08A" stroke-width="1" />
+      <line x1="10" y1="63" x2="16" y2="65" stroke="#FEF08A" stroke-width="1" />
+      <line x1="10" y1="69" x2="16" y2="71" stroke="#FEF08A" stroke-width="1" />
+      <!-- Kashira Pommel -->
+      <ellipse cx="13" cy="74" rx="4" ry="2" fill="url(#swordGold)" stroke="#1E293B" stroke-width="1" />
+    </g>
+  </g>
+</svg>
