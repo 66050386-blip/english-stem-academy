@@ -43,8 +43,8 @@ app.use(
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Root Landing Route
-app.get('/', (req, res) => {
+// API Landing Route (Moved to /api so root / serves the Frontend UI)
+app.get('/api', (req, res) => {
   res.json({
     name: '🦞 English & STEM Learning Academy API',
     status: 'ONLINE',
