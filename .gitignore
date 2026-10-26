@@ -1,27 +1,14 @@
-# Dependencies
+# Dependencies (platform-dependent binary modules - installed via npm install)
 node_modules/
 .pnp
 .pnp.js
 
 # Build outputs
-dist/
+client/dist/
+server/dist/
 build/
 out/
 .next/
-
-# Environment Variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Database
-server/prisma/dev.db
-server/prisma/dev.db-journal
-*.db
-*.db-journal
-*.sqlite
 
 # Logs
 npm-debug.log*
