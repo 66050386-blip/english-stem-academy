@@ -41,6 +41,14 @@ if (isPostgres) {
   try {
     execSync('npx prisma db push --skip-generate', { stdio: 'inherit' });
     console.log('✓ Database schema synchronized successfully with Supabase PostgreSQL!');
+    
+    console.log('Checking and seeding initial data to Supabase...');
+    try {
+      execSync('node prisma/seed.js', { stdio: 'inherit' });
+      console.log('✓ Initial data and accounts seeded successfully!');
+    } catch (seedErr) {
+      console.warn('⚠️ Seed notice:', seedErr.message);
+    }
   } catch (err) {
     console.warn('⚠️ Note on db push:', err.message);
   }
