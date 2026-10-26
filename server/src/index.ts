@@ -41,6 +41,26 @@ app.use(
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// Root Landing Route
+app.get('/', (req, res) => {
+  res.json({
+    name: '🦞 English & STEM Learning Academy API',
+    status: 'ONLINE',
+    version: '1.0.0',
+    healthCheck: '/api/health',
+    endpoints: {
+      auth: '/api/auth/login',
+      dashboard: '/api/dashboard',
+      courses: '/api/courses',
+      vocabulary: '/api/vocabulary',
+      practice: '/api/practice',
+      exams: '/api/exams',
+    },
+    message: 'Backend API is running smoothly on Render & connected to Supabase PostgreSQL!',
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // Health Check
 app.get('/api/health', (req, res) => {
   res.json({
